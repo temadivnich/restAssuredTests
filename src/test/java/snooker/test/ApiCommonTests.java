@@ -4,8 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import snooker.api.FileUtils;
 import snooker.api.SnookerApiService;
+import snooker.api.util.FileUtils;
 
 import java.io.File;
 import java.io.InputStream;
@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SnookerApiCommonTests {
+public class ApiCommonTests {
 
     private SnookerApiService api = new SnookerApiService();
 

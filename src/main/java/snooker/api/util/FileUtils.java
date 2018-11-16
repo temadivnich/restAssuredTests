@@ -1,4 +1,4 @@
-package snooker.api;
+package snooker.api.util;
 
 import java.io.File;
 import java.io.FileOutputStream;
