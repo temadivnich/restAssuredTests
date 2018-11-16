@@ -1,4 +1,4 @@
-package org.snooker.api;
+package snooker.api;
 
 public class SnookerApiService {
 
