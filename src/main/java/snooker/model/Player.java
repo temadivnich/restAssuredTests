@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.net.URI;
+import java.net.URL;
 import java.time.LocalDate;
 
 /**
@@ -44,10 +45,10 @@ public class Player {
     private final String LastName;
     private final String Nationality;
     private final String Sex;
-    private final URI BioPage;
+    private final URL BioPage;
     private final String Born;
     private final URI URL;
-    private final URI Photo;
+    private final URL Photo;
     private final String FirstSeasonAsPro;
 
     public LocalDate getBorn() {

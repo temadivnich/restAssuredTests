@@ -24,8 +24,8 @@ public class ApiCommonTests {
     @BeforeAll
     public static void setup() {
         RestAssured.baseURI = "https://api.snooker.org";
-        RestAssured.rootPath = "/";
         RestAssured.basePath = "/";
+        RestAssured.rootPath = "/";
         RestAssured.port = 80;
     }
 
@@ -35,7 +35,6 @@ public class ApiCommonTests {
         response.getBody().prettyPrint();
         response.then().statusCode(200).assertThat()
                 .body("Number", equalTo(Collections.singletonList(5)));
-
     }
 
     @Test
@@ -45,7 +44,7 @@ public class ApiCommonTests {
 
     @Test
     void getPicture() throws Exception {
-        InputStream inputStream = get("http://snooker.org/img/players/rosullivan.jpg").asInputStream();
+        InputStream inputStream = given().baseUri("http://snooker.org/").get("img/players/rosullivan.jpg").asInputStream();
         File file = FileUtils.createFile(inputStream, "Ronnie.jpg");
         inputStream.close();
         System.out.println("File saved to: " + file.getAbsolutePath());
