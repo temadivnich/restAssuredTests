@@ -2,6 +2,7 @@ package snooker.test;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import snooker.api.SnookerApiService;
@@ -17,6 +18,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Log4j2
 public class ApiCommonTests {
 
     private SnookerApiService api = new SnookerApiService();
