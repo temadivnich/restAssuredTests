@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 /**
  * Represent Event, e.g. Northern Ireland Open
+ *
  * <p>
  * "ID": 712,
  * "Name": "Northern Ireland Open",

@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 /**
- * Represent single Round, in scope of Match between two Players
+ * Represent a Round, in scope of Event
  *
  * @see Match
  * @see Player
  * <p>
+ *
  * "Round": 1,
  * "RoundName": "Qual Round 1",
  * "EventID": 398,

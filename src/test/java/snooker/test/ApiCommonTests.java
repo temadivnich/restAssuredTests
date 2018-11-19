@@ -44,7 +44,9 @@ public class ApiCommonTests {
 
     @Test
     void getPicture() throws Exception {
-        InputStream inputStream = given().baseUri("http://snooker.org/").get("img/players/rosullivan.jpg").asInputStream();
+        InputStream inputStream = given().baseUri("http://snooker.org/")
+//                .queryParam("","")
+                .get("img/players/rosullivan.jpg").asInputStream();
         File file = FileUtils.createFile(inputStream, "Ronnie.jpg");
         inputStream.close();
         System.out.println("File saved to: " + file.getAbsolutePath());

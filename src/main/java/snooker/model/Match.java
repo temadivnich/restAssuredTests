@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 /**
- * Represents the Match, played between two Players, during Event
+ * Represents a single Match, played between two Players, in one Round, during Event
  *
  * @see Player
  * @see Event

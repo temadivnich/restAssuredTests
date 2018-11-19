@@ -29,7 +29,9 @@ public class PlayerEndpointTests {
         given().baseUri("http://api.snooker.org").queryParam("p", playerId)
                 .log().ifValidationFails()
                 .get().then().assertThat().statusCode(200)
-                .assertThat().body("ID", equalTo(Collections.singletonList(playerId)));
+                .assertThat()
+                .body("ID", equalTo(Collections.singletonList(playerId)))
+                .body("FirstName", equalTo(player.getFirstName()));
 
         log.info(player);
     }
