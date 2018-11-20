@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import snooker.BaseTest;
 import snooker.model.Event;
 import snooker.model.Player;
 
@@ -11,10 +12,10 @@ import java.util.List;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
-import static snooker.api.ServiceType.PlayersInEvent;
+import static snooker.model.ServiceType.PlayersInEvent;
 
 @Log4j2
-public class EventTest {
+public class EventTest implements BaseTest {
 
     //    @RepeatedTest(value = 1)
     @ParameterizedTest
@@ -22,9 +23,7 @@ public class EventTest {
     void whenGetEventInfo_thenOk(Event event) {
         String paramsString = PlayersInEvent.getParamsString().replace("{eventId}", event.getID() + "");
 
-        Response response = given().baseUri("http://api.snooker.org")
-                .log().ifValidationFails()
-                .get(paramsString);
+        Response response = given().log().ifValidationFails().get(paramsString);
 
         response.then().assertThat().statusCode(200)
                 .header("Content-Type", "application/json");

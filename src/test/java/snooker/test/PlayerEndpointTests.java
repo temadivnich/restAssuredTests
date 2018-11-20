@@ -3,6 +3,7 @@ package snooker.test;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import snooker.BaseTest;
 import snooker.model.Player;
 
 import java.net.URL;
@@ -20,13 +21,13 @@ import static org.hamcrest.Matchers.equalTo;
  * Output: Player info as JSON (one-dimensional)
  */
 @Log4j2
-public class PlayerEndpointTests {
+public class PlayerEndpointTests implements BaseTest {
 
     @ParameterizedTest
     @MethodSource("playerProvider")
     void givenPlayerId_thenCanFindPlayerById(Player player) {
         Integer playerId = player.getID();
-        given().baseUri("http://api.snooker.org").queryParam("p", playerId)
+        given().queryParam("p", playerId)
                 .log().ifValidationFails()
                 .get().then().assertThat().statusCode(200)
                 .assertThat()

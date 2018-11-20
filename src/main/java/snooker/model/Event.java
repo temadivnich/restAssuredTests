@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.net.URI;
 import java.time.LocalDate;
+import java.util.Optional;
 
 /**
  * Represent Event, e.g. Northern Ireland Open
@@ -59,8 +60,8 @@ public class Event {
 
     private final Integer ID;
     private final String Name;
-    private final String StartDate; //
-    private final String EndDate; //
+    private final String StartDate;
+    private final String EndDate;
     private final String Sponsor;
     private final Integer Season;
     private final String City;
@@ -74,11 +75,21 @@ public class Event {
     private final String Note;
     private final Integer DefendingChampion;
 
-    public LocalDate getStartDate() {
-        return LocalDate.parse(StartDate);
+    public Optional<LocalDate> getStartDate() {
+        return parse(StartDate);
     }
 
-    public LocalDate getEndDate() {
-        return LocalDate.parse(EndDate);
+    public Optional<LocalDate> getEndDate() {
+        return parse(EndDate);
+    }
+
+    private Optional<LocalDate> parse(String date) {
+        Optional<LocalDate> opt;
+        try {
+            opt = Optional.of(LocalDate.parse(date));
+        } catch (RuntimeException e) {
+            return Optional.empty();
+        }
+        return opt;
     }
 }

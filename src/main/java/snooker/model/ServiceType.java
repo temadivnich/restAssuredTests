@@ -1,4 +1,4 @@
-package snooker.api;
+package snooker.model;
 
 import snooker.api.util.UrlResolver;
 
