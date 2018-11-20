@@ -2,94 +2,75 @@ package snooker.api;
 
 import snooker.api.util.UrlResolver;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public enum ServiceType {
+    Info(new HashMap<>()),
 
-    Info("API home page"),
-    Event {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("e", "{eventId}");
-        }
-    },
-    Match {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("e", "{eventId}", "r", "{roundId}", "n", "{matchNumber}");
-        }
-    },
-    Player {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("p", "{playerId}");
-        }
-    },
-    EventsInSeason {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("t", "5", "s", "{seasonYear}");
-        }
-    },
-    MatchesOfEvent {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("t", "6", "e", "{eventId}");
-        }
-    },
-    OngoingMatches("including those between sessions") {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("t", "7");
-        }
-    },
-    MatchesForPlayerInSeason {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("t", "8", "p", "{playerId}", "s", "{seasonYear}");
-        }
-    },
-    PlayersInEvent {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("t", "9", "e", "{eventId}");
-        }
-    },
-    Players {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("t", "10", "st", "{playerStatus}", "s", "{seasonYear}");
-        }
-    },
-    Rankings {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("rt", "{rankingType}", "s", "{seasonYear}");
-        }
-    },
-    RoundInfoForEvent {
-        @Override
-        protected Map<String, String> getParams() {
-            return Map.of("t", "12", "e", "{eventId}");
-        }
-    },
+    Event(new HashMap<String, String>() {{
+        put("e", "{eventId}");
+    }}),
+
+    Match(new HashMap<String, String>() {{
+        put("e", "{eventId}");
+        put("r", "{roundId}");
+        put("n", "{matchNumber}");
+    }}),
+
+    Player(new HashMap<String, String>() {{
+        put("p", "{playerId}");
+    }}),
+
+    EventsInSeason(new HashMap<String, String>() {{
+        put("t", "5");
+        put("s", "{seasonYear}");
+    }}),
+
+    MatchesOfEvent(new HashMap<String, String>() {{
+        put("t", "6");
+        put("e", "{eventId}");
+    }}),
+
+    OngoingMatches(new HashMap<String, String>() {{
+        put("t", "7");
+    }}),
+
+    MatchesForPlayerInSeason(new HashMap<String, String>() {{
+        put("t", "8");
+        put("p", "{playerId}");
+        put("s", "{seasonYear}");
+    }}),
+
+    PlayersInEvent(new HashMap<String, String>() {{
+        put("t", "9");
+        put("e", "{eventId}");
+    }}),
+
+    Players(new HashMap<String, String>() {{
+        put("t", "10");
+        put("st", "{playerStatus}");
+        put("s", "{seasonYear}");
+    }}),
+
+    Rankings(new HashMap<String, String>() {{
+        put("rt", "{rankingType}");
+        put("s", "{seasonYear}");
+    }}),
+
+    RoundInfoForEvent(new HashMap<String, String>() {{
+        put("t", "12");
+        put("e", "{eventId}");
+    }}),
     ;
 
-    private final String description;
-
-    ServiceType(String description) {
-        this.description = description;
+    ServiceType(Map<String, String> params) {
+        this.params = params;
     }
 
-    ServiceType() {
-        this.description = "";
-    }
-
-    protected Map<String, String> getParams() {
-        return Map.of();
-    }
+    private Map<String, String> params;
 
     public String getParamsString() {
-        return UrlResolver.toQueryString(getParams());
+        return UrlResolver.toQueryString(params);
     }
 }
