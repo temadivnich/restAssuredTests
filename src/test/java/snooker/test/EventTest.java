@@ -12,7 +12,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
-import static snooker.model.ServiceType.PlayersInEvent;
+import static snooker.api.ServiceType.PlayersInEvent;
 
 @Log4j2
 public class EventTest implements BaseTest {
