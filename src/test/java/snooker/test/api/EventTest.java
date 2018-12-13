@@ -1,5 +1,6 @@
-package snooker.test;
+package snooker.test.api;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,8 +26,8 @@ public class EventTest implements BaseTest {
 
         Response response = given().log().ifValidationFails().get(paramsString);
 
-        response.then().assertThat().statusCode(200)
-                .header("Content-Type", "application/json");
+        response.then().assertThat().statusCode(200).contentType(ContentType.JSON);
+//                .header("Content-Type", "application/json");
 //                .body(".", Matchers.hasItem(1));
 
         List<Player> players = response.body().jsonPath().getList(".", Player.class);

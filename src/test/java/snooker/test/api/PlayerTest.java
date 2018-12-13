@@ -1,4 +1,4 @@
-package snooker.test;
+package snooker.test.api;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.equalTo;
  * Output: Player info as JSON (one-dimensional)
  */
 @Log4j2
-public class PlayerEndpointTests implements BaseTest {
+public class PlayerTest implements BaseTest {
 
     @ParameterizedTest
     @MethodSource("playerProvider")

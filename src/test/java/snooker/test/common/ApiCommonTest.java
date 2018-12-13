@@ -1,4 +1,4 @@
-package snooker.test;
+package snooker.test.common;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.lessThan;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Log4j2
-public class ApiCommonTests implements BaseTest {
+public class ApiCommonTest implements BaseTest {
 
     private static final String DUMMY_QUERY = "?e=397&r=1&n=5";
 
